@@ -14,13 +14,3 @@ Automated Student Enrollment Information System built with Laravel.
 composer install
 php artisan migrate
 php artisan serves
-
-
----
-
-# IMPORTANT:
-## Delete ALL of these if present:
-```text id="c7s9nb"
-<<<<<<< HEAD
-=======
->>>>>>> branch-name

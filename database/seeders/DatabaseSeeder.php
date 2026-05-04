@@ -13,7 +13,7 @@ class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
-        // ─── ADMIN ───────────────────────────────────────────
+        // ADMIN 
         User::create([
             'name'  => 'Admin User',
             'email' => 'admin@seis.edu',
@@ -28,7 +28,7 @@ class DatabaseSeeder extends Seeder
             'role'  => 'admin',
         ]);
 
-        // ─── SUBJECTS ────────────────────────────────────────
+        // SUBJECTS
         $cs = Subject::create([
             'code' => 'CS', 'name' => 'Computer Science',
             'description' => 'Study of computation, algorithms, and information processing',
@@ -45,7 +45,7 @@ class DatabaseSeeder extends Seeder
             'department' => 'Natural Sciences', 'credits' => 4,
         ]);
 
-        // ─── COURSES ─────────────────────────────────────────
+        // COURSES 
         $cs101 = Course::create([
             'code' => 'CS101', 'name' => 'Introduction to Programming',
             'instructor' => 'Dr. Sarah Wilson', 'schedule' => 'Mon/Wed 10:00-11:30',
@@ -67,7 +67,7 @@ class DatabaseSeeder extends Seeder
             'credits' => 4, 'max_students' => 30, 'subject_id' => $math->id,
         ]);
 
-        // ─── STUDENTS ────────────────────────────────────────
+        // STUDENTS
         $michael = User::create([
             'name' => 'Michael Johnson', 'email' => 'michael@seis.edu',
             'password' => Hash::make('password'), 'role' => 'student',
@@ -81,7 +81,7 @@ class DatabaseSeeder extends Seeder
             'enrollment_date' => '2024-09-01',
         ]);
 
-        // ─── ENROLLMENTS ─────────────────────────────────────
+        // ENROLLMENTS 
         Enrollment::create(['user_id' => $michael->id, 'course_id' => $cs101->id,   'status' => 'active', 'enrollment_date' => '2024-09-05']);
         Enrollment::create(['user_id' => $michael->id, 'course_id' => $cs202->id,   'status' => 'active', 'enrollment_date' => '2026-04-05']);
         Enrollment::create(['user_id' => $jane->id,    'course_id' => $phys101->id, 'status' => 'active', 'enrollment_date' => '2024-09-05']);
