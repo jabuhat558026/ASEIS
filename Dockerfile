@@ -33,8 +33,6 @@ RUN npm install && npm run build
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache \
     && chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
 
-RUN cp .env.example .env && php artisan key:generate
-
 RUN chmod +x /var/www/html/start.sh
 
 EXPOSE 10000
