@@ -35,6 +35,8 @@ RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cac
 
 RUN cp .env.example .env && php artisan key:generate
 
+RUN chmod +x /var/www/html/start.sh
+
 EXPOSE 10000
 
-CMD php artisan migrate --force && php artisan db:seed --force && apache2-foreground
+CMD ["/bin/bash", "/var/www/html/start.sh"]
