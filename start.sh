@@ -2,9 +2,6 @@
 
 cd /var/www/html
 
-# Write .env file from Render environment variables
-printenv | grep -E '^(APP_|DB_|SESSION_|CACHE_|QUEUE_|LOG_)' > /tmp/env_vars
-
 cat > .env <<EOF
 APP_NAME=ASEIS
 APP_ENV=production
@@ -19,23 +16,20 @@ DB_DATABASE=${DB_DATABASE}
 DB_USERNAME=${DB_USERNAME}
 DB_PASSWORD=${DB_PASSWORD}
 
-SESSION_DRIVER=database
+SESSION_DRIVER=file
 SESSION_LIFETIME=120
-CACHE_STORE=database
-QUEUE_CONNECTION=database
+CACHE_STORE=file
+QUEUE_CONNECTION=sync
 FILESYSTEM_DISK=local
 LOG_CHANNEL=stack
 LOG_LEVEL=debug
 EOF
 
 echo "--- .env written ---"
-cat .env
-
 php artisan config:clear
-php artisan key:generate --force
+php artisan config:cache
 php artisan migrate --force
 php artisan db:seed --force
-
-echo "--- migrations done ---"
+echo "--- done ---"
 
 apache2-foreground
