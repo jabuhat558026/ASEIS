@@ -37,4 +37,5 @@ RUN chmod +x /var/www/html/start.sh
 
 EXPOSE 10000
 
-CMD ["/bin/bash", "/var/www/html/start.sh"]
+ENTRYPOINT ["/bin/bash"]
+CMD ["/var/www/html/start.sh"]
